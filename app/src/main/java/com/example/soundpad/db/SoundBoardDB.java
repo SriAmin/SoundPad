@@ -11,11 +11,13 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.soundpad.Soundboard;
 
+//Database for SoundBoards
 @Database(entities = {Soundboard.class}, version = 1)
 public abstract class SoundBoardDB extends RoomDatabase {
     public abstract SoundBoardDAO soundBoardDAO();
     private static volatile SoundBoardDB INSTANCE;
 
+    //Used to obtain the sound board database inside its file
     static SoundBoardDB getDatabase(final Context context) {
         if (INSTANCE == null) {
             synchronized (SoundBoardDB.class) {
@@ -28,6 +30,7 @@ public abstract class SoundBoardDB extends RoomDatabase {
         return INSTANCE;
     }
 
+    //Used to populate database when app starts up
     private static SoundBoardDB.Callback soundBoardDBCallback = new SoundBoardDB.Callback(){
         @Override
         public void onOpen(@NonNull SupportSQLiteDatabase db) {

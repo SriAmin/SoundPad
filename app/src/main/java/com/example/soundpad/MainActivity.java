@@ -26,7 +26,9 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    //Date Format for time stamp
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+
     ListView lstSoundBoard;
     ArrayAdapter soundBoardAdatper;
     ArrayList<Soundboard> soundboardArrayList;
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //Deals with actiosn regarding the button on bottom right corner
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Intializes a new ArrayList of SoundBoards
         soundboardArrayList = new ArrayList<Soundboard>();
 
         lstSoundBoard = findViewById(R.id.lstSoundBoard);
@@ -68,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
+        //Appends the ArrayList to the sound board adapter
         soundBoardAdatper = new SoundBoardAdapter(MainActivity.this, soundboardArrayList);
         lstSoundBoard.setAdapter(soundBoardAdatper);
 
@@ -96,20 +101,23 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    //Populates the new ArrayList with Predefined soundboards
     private void populateList() {
 
-        soundboardArrayList.add(new Soundboard(1, "Test", simpleDateFormat.format(new Date()), "Sri Amin", "Sound 1"));
-        soundboardArrayList.add(new Soundboard(2, "Jah", simpleDateFormat.format(new Date()), "XXXTentacion", "Sound 2"));
-        soundboardArrayList.add(new Soundboard(3, "Juice", simpleDateFormat.format(new Date()), "Juice Wrld", "Sound 3"));
-        soundboardArrayList.add(new Soundboard(4, "John", simpleDateFormat.format(new Date()), "Johhny Sins", "Sound 4"));
-        soundboardArrayList.add(new Soundboard(5, "Man", simpleDateFormat.format(new Date()), "Mandingo", "Sound 5"));
+        soundboardArrayList.add(new Soundboard(1, "Connect Power", simpleDateFormat.format(new Date()), "Sri Amin", "android.resource://" + getPackageName() + "/" + R.raw.connect_power));
+        soundboardArrayList.add(new Soundboard(2, "Whoosh", simpleDateFormat.format(new Date()), "XXXTentacion", "android.resource://" + getPackageName() + "/" + R.raw.whoosh));
+        soundboardArrayList.add(new Soundboard(3, "Payment Success", simpleDateFormat.format(new Date()), "Juice Wrld", "android.resource://" + getPackageName() + "/" + R.raw.payment_success));
+        soundboardArrayList.add(new Soundboard(4, "Message Received", simpleDateFormat.format(new Date()), "Johhny Sins", "android.resource://" + getPackageName() + "/" + R.raw.message_recieved));
+        soundboardArrayList.add(new Soundboard(5, "COD Hit Marker", simpleDateFormat.format(new Date()), "Mandingo", "android.resource://" + getPackageName() + "/" + R.raw.hit_marker));
         Log.d("MainActivity.class", "Array Listed Populated");
     }
 
+    //Adds a OnClickListener to each item on the list
     private void listViewListener() {
         lstSoundBoard.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //This will go to the soundPad intent sending the specific sound board data
                 Soundboard soundboard = soundboardArrayList.get(position);
                 Intent soundPadIntent = new Intent(MainActivity.this, soundPad.class);
                 soundPadIntent.putExtra("ID", Integer.toString(soundboard.getId()));

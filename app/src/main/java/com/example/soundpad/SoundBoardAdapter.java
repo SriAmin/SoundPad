@@ -16,6 +16,7 @@ import com.example.soundpad.Soundboard;
 
 import java.util.ArrayList;
 
+//Sets the view for each SoundBoard item within the List View
 public class SoundBoardAdapter extends ArrayAdapter {
 
     private Context context;
@@ -33,6 +34,7 @@ public class SoundBoardAdapter extends ArrayAdapter {
             convertView = LayoutInflater.from(context).inflate(R.layout.soundboard_item, parent, false);
         }
 
+        //Sets the position and elements of each list element
         TextView txtTitle = convertView.findViewById(R.id.txtTitle);
         TextView txtDate = convertView.findViewById(R.id.txtDate);
         TextView txtAuthor = convertView.findViewById(R.id.txtAuthor);

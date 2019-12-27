@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+//Model of Sound Board inside the database
 @Entity(tableName = "soundBoard_table")
 public class Soundboard {
 
@@ -31,6 +32,7 @@ public class Soundboard {
         this.sounds = sounds;
     }
 
+    //Getters and Setters for every member variables within the class
     public int getId() {return id;}
 
     public void setId (int id) {this.id = id;}

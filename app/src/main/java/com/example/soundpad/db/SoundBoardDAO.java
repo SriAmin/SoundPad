@@ -10,8 +10,11 @@ import com.example.soundpad.Soundboard;
 
 import java.util.List;
 
+//DAO for SoundBoard for sound board database
 @Dao
 public interface SoundBoardDAO {
+
+    //Functions used for inserting, deleting and obtaining all sound boards for the database
     @Insert
     void insert(Soundboard soundBoard);
 

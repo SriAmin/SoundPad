@@ -9,6 +9,7 @@ import com.example.soundpad.Soundboard;
 
 import java.util.List;
 
+//Repository for Sound Boards database, used to insert and delete entities within the database
 public class SoundBoardRepository {
     private SoundBoardDAO soundBoardDAO;
     private LiveData<List<Soundboard>> allSoundBoards;
@@ -25,6 +26,7 @@ public class SoundBoardRepository {
 
     public void delete (Soundboard soundboard) { new deleteAsyncTask(soundBoardDAO).execute(soundboard); }
 
+    //Add a sound board entity in the database
     public static class insertAsyncTask extends AsyncTask<Soundboard, Void, Void> {
         private SoundBoardDAO asyncTaskDao;
         public insertAsyncTask(SoundBoardDAO soundBoardDAO) { asyncTaskDao = soundBoardDAO; }
@@ -36,6 +38,7 @@ public class SoundBoardRepository {
         }
     }
 
+    //Delete a sound board entity in the database
     public static class deleteAsyncTask extends AsyncTask<Soundboard, Void, Void> {
         private SoundBoardDAO asyncTaskDao;
         public deleteAsyncTask(SoundBoardDAO soundBoardDAO) { asyncTaskDao = soundBoardDAO; }

@@ -11,10 +11,12 @@ import com.example.soundpad.db.SoundBoardRepository;
 
 import java.util.List;
 
+//ViewModel for Sound Boards inside the Sound Board database
 public class SoundBoardViewModel extends AndroidViewModel {
     private SoundBoardRepository soundBoardRepository;
     private LiveData<List<Soundboard>> allSoundBoards;
 
+    //Used for inserting, deleted and obtaining all soundboards inside its database
     public SoundBoardViewModel(@NonNull Application application) {
         super(application);
         soundBoardRepository = new SoundBoardRepository(application);
