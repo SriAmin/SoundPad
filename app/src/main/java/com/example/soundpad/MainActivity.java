@@ -110,7 +110,14 @@ public class MainActivity extends AppCompatActivity {
                 "android.resource://" + getPackageName() + "/" + R.raw.homepod_siri,
                 "android.resource://" + getPackageName() + "/" + R.raw.siri
                 ));
-//        soundboardArrayList.add(new Soundboard(5, "COD Hit Marker", simpleDateFormat.format(new Date()), "Mandingo", "android.resource://" + getPackageName() + "/" + R.raw.hit_marker));
+        soundboardArrayList.add(new Soundboard(2, "Call of Duty Sound Board", simpleDateFormat.format(new Date()), "Sri Amin", R.drawable.cod,
+                "android.resource://" + getPackageName() + "/" + R.raw.hit_marker,
+                "android.resource://" + getPackageName() + "/" + R.raw.mission_failed,
+                "android.resource://" + getPackageName() + "/" + R.raw.last_one,
+                "android.resource://" + getPackageName() + "/" + R.raw.instakill,
+                "android.resource://" + getPackageName() + "/" + R.raw.double_points,
+                "android.resource://" + getPackageName() + "/" + R.raw.max_ammo
+                ));
         Log.d("MainActivity.class", "Array Listed Populated");
     }
 
@@ -126,6 +133,7 @@ public class MainActivity extends AppCompatActivity {
                 soundPadIntent.putExtra("TITLE", soundboard.getTitle());
                 soundPadIntent.putExtra("DATE", soundboard.getDate());
                 soundPadIntent.putExtra("AUTHOR", soundboard.getAuthor());
+                soundPadIntent.putExtra("IMAGE", soundboard.getImage());
                 soundPadIntent.putExtra("SOUND1", soundboard.getSound1());
                 soundPadIntent.putExtra("SOUND2", soundboard.getSound2());
                 soundPadIntent.putExtra("SOUND3", soundboard.getSound3());

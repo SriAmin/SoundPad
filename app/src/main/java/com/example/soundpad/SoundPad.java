@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.provider.OpenableColumns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class SoundPad extends AppCompatActivity implements View.OnClickListener {
@@ -16,6 +17,7 @@ public class SoundPad extends AppCompatActivity implements View.OnClickListener 
     MediaPlayer mediaPlayer1, mediaPlayer2, mediaPlayer3, mediaPlayer4, mediaPlayer5, mediaPlayer6;
 
     TextView txtID, txtTitle, txtDate, txtAuthor;
+    ImageView imgSoundBoard;
     Button btnSound1, btnSound2, btnSound3, btnSound4, btnSound5, btnSound6;
 
     @Override
@@ -29,6 +31,7 @@ public class SoundPad extends AppCompatActivity implements View.OnClickListener 
         txtTitle.setText(getIntent().getStringExtra("TITLE"));
         txtDate.setText(getIntent().getStringExtra("DATE"));
         txtAuthor.setText(getIntent().getStringExtra("AUTHOR"));
+        imgSoundBoard.setImageResource(getIntent().getIntExtra("IMAGE", R.drawable.ic_launcher_foreground));
 
         this.mediaPlaySetUp();
     }
@@ -98,6 +101,7 @@ public class SoundPad extends AppCompatActivity implements View.OnClickListener 
         txtTitle = findViewById(R.id.txtTitle);
         txtDate = findViewById(R.id.txtDate);
         txtAuthor = findViewById(R.id.txtAuthor);
+        imgSoundBoard = findViewById(R.id.imgSoundBoard);
 
         //Assigns the multiple buttons for each sound
         btnSound1 = findViewById(R.id.btnSound1);
