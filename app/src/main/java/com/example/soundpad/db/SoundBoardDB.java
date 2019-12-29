@@ -12,7 +12,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import com.example.soundpad.Soundboard;
 
 //Database for SoundBoards
-@Database(entities = {Soundboard.class}, version = 1)
+@Database(entities = {Soundboard.class}, version = 2)
 public abstract class SoundBoardDB extends RoomDatabase {
     public abstract SoundBoardDAO soundBoardDAO();
     private static volatile SoundBoardDB INSTANCE;

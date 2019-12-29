@@ -9,7 +9,6 @@ import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.lifecycle.Observer;
 
 import android.util.Log;
 import android.view.View;
@@ -22,7 +21,6 @@ import android.widget.ListView;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -104,11 +102,15 @@ public class MainActivity extends AppCompatActivity {
     //Populates the new ArrayList with Predefined soundboards
     private void populateList() {
 
-        soundboardArrayList.add(new Soundboard(1, "Connect Power", simpleDateFormat.format(new Date()), "Sri Amin", "android.resource://" + getPackageName() + "/" + R.raw.connect_power));
-        soundboardArrayList.add(new Soundboard(2, "Whoosh", simpleDateFormat.format(new Date()), "XXXTentacion", "android.resource://" + getPackageName() + "/" + R.raw.whoosh));
-        soundboardArrayList.add(new Soundboard(3, "Payment Success", simpleDateFormat.format(new Date()), "Juice Wrld", "android.resource://" + getPackageName() + "/" + R.raw.payment_success));
-        soundboardArrayList.add(new Soundboard(4, "Message Received", simpleDateFormat.format(new Date()), "Johhny Sins", "android.resource://" + getPackageName() + "/" + R.raw.message_recieved));
-        soundboardArrayList.add(new Soundboard(5, "COD Hit Marker", simpleDateFormat.format(new Date()), "Mandingo", "android.resource://" + getPackageName() + "/" + R.raw.hit_marker));
+        soundboardArrayList.add(new Soundboard(1, "iOS Sound Board", simpleDateFormat.format(new Date()), "Sri Amin", R.drawable.apple_logo,
+                "android.resource://" + getPackageName() + "/" + R.raw.connect_power,
+                "android.resource://" + getPackageName() + "/" + R.raw.whoosh,
+                "android.resource://" + getPackageName() + "/" + R.raw.payment_success,
+                "android.resource://" + getPackageName() + "/" + R.raw.message_recieved,
+                "android.resource://" + getPackageName() + "/" + R.raw.homepod_siri,
+                "android.resource://" + getPackageName() + "/" + R.raw.siri
+                ));
+//        soundboardArrayList.add(new Soundboard(5, "COD Hit Marker", simpleDateFormat.format(new Date()), "Mandingo", "android.resource://" + getPackageName() + "/" + R.raw.hit_marker));
         Log.d("MainActivity.class", "Array Listed Populated");
     }
 
@@ -117,14 +119,19 @@ public class MainActivity extends AppCompatActivity {
         lstSoundBoard.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //This will go to the soundPad intent sending the specific sound board data
+                //This will go to the SoundPad intent sending the specific sound board data
                 Soundboard soundboard = soundboardArrayList.get(position);
-                Intent soundPadIntent = new Intent(MainActivity.this, soundPad.class);
+                Intent soundPadIntent = new Intent(MainActivity.this, SoundPad.class);
                 soundPadIntent.putExtra("ID", Integer.toString(soundboard.getId()));
                 soundPadIntent.putExtra("TITLE", soundboard.getTitle());
                 soundPadIntent.putExtra("DATE", soundboard.getDate());
                 soundPadIntent.putExtra("AUTHOR", soundboard.getAuthor());
-                soundPadIntent.putExtra("SOUND", soundboard.getSounds());
+                soundPadIntent.putExtra("SOUND1", soundboard.getSound1());
+                soundPadIntent.putExtra("SOUND2", soundboard.getSound2());
+                soundPadIntent.putExtra("SOUND3", soundboard.getSound3());
+                soundPadIntent.putExtra("SOUND4", soundboard.getSound4());
+                soundPadIntent.putExtra("SOUND5", soundboard.getSound5());
+                soundPadIntent.putExtra("SOUND6", soundboard.getSound6());
                 startActivity(soundPadIntent);
             }
         });

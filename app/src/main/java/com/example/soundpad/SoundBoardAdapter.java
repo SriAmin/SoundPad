@@ -45,6 +45,7 @@ public class SoundBoardAdapter extends ArrayAdapter {
         txtTitle.setText(soundboard.getTitle());
         txtDate.setText(soundboard.getDate());
         txtAuthor.setText(soundboard.getAuthor());
+        imgView.setImageResource(soundboard.getImage());
 
         return convertView;
     }
