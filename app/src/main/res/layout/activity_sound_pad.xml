@@ -195,3 +195,7 @@
         app:srcCompat="@drawable/circled_play" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--
+Image Resource: https://www.flaticon.com/premium-icon/play-button_513553
+-->
