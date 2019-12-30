@@ -2,15 +2,14 @@ package com.example.soundpad;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.database.Cursor;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.OpenableColumns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class SoundPad extends AppCompatActivity implements View.OnClickListener {
 
@@ -18,7 +17,7 @@ public class SoundPad extends AppCompatActivity implements View.OnClickListener 
 
     TextView txtID, txtTitle, txtDate, txtAuthor;
     ImageView imgSoundBoard;
-    Button btnSound1, btnSound2, btnSound3, btnSound4, btnSound5, btnSound6;
+    ImageView btnSound1, btnSound2, btnSound3, btnSound4, btnSound5, btnSound6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,13 +31,17 @@ public class SoundPad extends AppCompatActivity implements View.OnClickListener 
         txtDate.setText(getIntent().getStringExtra("DATE"));
         txtAuthor.setText(getIntent().getStringExtra("AUTHOR"));
         imgSoundBoard.setImageResource(getIntent().getIntExtra("IMAGE", R.drawable.ic_launcher_foreground));
-
+        imgSoundBoard.setOnClickListener(this);
         this.mediaPlaySetUp();
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.imgSoundBoard:
+                Toast.makeText(this, "Hello", Toast.LENGTH_LONG).show();
+                break;
+
             case R.id.btnSound1:
                 if (mediaPlayer1.isPlaying()) {
                     mediaPlayer1.seekTo(0);

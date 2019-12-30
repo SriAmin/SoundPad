@@ -1,4 +1,4 @@
-package com.example.soundpad;
+package values;
 
 import android.content.Context;
 import android.view.LayoutInflater;
